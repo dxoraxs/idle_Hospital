@@ -27,7 +27,6 @@ public class LevelAllScene : MonoBehaviour
         return (int)(Mathf.Ceil(number * multiply));
     }
 
-
     public string GetCostTramUpdate()
     {
         return _initialSettings.InitialSettingTram.CostUpgradeTram.ToString();

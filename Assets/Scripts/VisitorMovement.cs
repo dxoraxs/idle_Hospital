@@ -96,22 +96,22 @@ public class VisitorMovement : MovingObject
 
     private void FindMinimalPathToProcedure()
     {
-        TrackMov.Add(_pointMovement.StartPoint.position);
+        TrackMov.Add(_pointMovement.GetStartPosition);
         float minimalDistanceToProcedure = distancePointToPoint(_targetProcedure);
         int countPoint = 0;
         while (minimalDistanceToProcedure != Vector3.Distance(TrackMov[TrackMov.Count -1], _targetProcedure))
         {
-            TrackMov.Add(_pointMovement.WayVisitors[countPoint].position);
+            TrackMov.Add(_pointMovement.GetPointPosition(countPoint));
             countPoint++;
         }
         TrackMov.Add(_targetProcedure);
         countPoint--;
-        while (countPoint< _pointMovement.WayVisitors.Count)
+        while (countPoint< _pointMovement.GetCountList)
         {
-            TrackMov.Add(_pointMovement.WayVisitors[countPoint].position);
+            TrackMov.Add(_pointMovement.GetPointPosition(countPoint));
             countPoint++;
         }
-        TrackMov.Add(_pointMovement.FinishPoint.position);
+        TrackMov.Add(_pointMovement.GetFinishPosition);
     }
 
     void OnDrawGizmos()
@@ -142,9 +142,9 @@ public class VisitorMovement : MovingObject
     private float distancePointToPoint(Vector3 firstPoint)
     {
         float returnFloat = int.MaxValue;
-        for (int i =0; i< _pointMovement.WayVisitors.Count; i++)
+        for (int i =0; i< _pointMovement.GetCountList; i++)
         {
-            float interimDistance = Vector3.Distance(firstPoint, _pointMovement.WayVisitors[i].position);
+            float interimDistance = Vector3.Distance(firstPoint, _pointMovement.GetPointPosition(i));
             if (returnFloat > interimDistance)
                 returnFloat = interimDistance;
         }

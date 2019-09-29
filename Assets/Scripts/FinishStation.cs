@@ -24,5 +24,4 @@ public class FinishStation : MonoBehaviour
             other.GetComponent<VisitorMovement>().StayInStation();
         }
     }
-
 }

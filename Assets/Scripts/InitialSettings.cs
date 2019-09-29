@@ -10,7 +10,6 @@ public class InitialSettings : ScriptableObject
     [Header("Procedure Settings")]
     public ProcedureSettings InitialSettingProcedure;
 
-
     [Header("Tram Settings")]
     public TramSettings InitialSettingTram;
 
